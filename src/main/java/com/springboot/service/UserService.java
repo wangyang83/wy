@@ -1,12 +1,7 @@
 package com.springboot.service;
 
-import com.springboot.domain.User;
-import com.springboot.domain.UserDomain;
+import com.springboot.domain.entity.User;
 import com.springboot.tool.domain.PageResult;
-import com.springboot.tool.page.domain.Page;
-import com.springboot.tool.util.GridPage;
-
-import java.util.List;
 
 /**
  * @author 王阳

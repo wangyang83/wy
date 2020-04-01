@@ -1,4 +1,4 @@
-package com.springboot.domain;
+package com.springboot.domain.search;
 
 import java.io.Serializable;
 

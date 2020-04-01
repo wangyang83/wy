@@ -103,7 +103,11 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.5</version>
         </dependency>
-
+<!--支持AOP-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

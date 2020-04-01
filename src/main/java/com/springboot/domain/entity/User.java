@@ -1,4 +1,4 @@
-package com.springboot.domain;
+package com.springboot.domain.entity;
 
 import com.springboot.tool.domain.BaseDomain;
 import io.swagger.annotations.ApiModel;

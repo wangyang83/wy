@@ -1,8 +1,7 @@
 package com.springboot.mapper;
 
-import com.springboot.domain.User;
-import com.springboot.domain.UserDomain;
-import com.springboot.tool.page.domain.Page;
+import com.springboot.domain.entity.User;
+import com.springboot.domain.search.UserDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -1,12 +1,10 @@
 package com.springboot.controller;
 
-import com.springboot.domain.User;
-import com.springboot.domain.UserDomain;
+import com.springboot.domain.entity.User;
 import com.springboot.service.UserService;
 import com.springboot.tool.config.BaseException;
 import com.springboot.tool.config.ImgCompress;
 import com.springboot.tool.config.ImgUtil;
-import com.springboot.tool.page.domain.Page;
 import com.springboot.tool.util.BaseResult;
 import com.springboot.tool.util.GridPage;
 import io.swagger.annotations.Api;
@@ -16,9 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.util.List;
-
-import static com.springboot.tool.config.ImgUtil.ScaleImage;
 
 /**
  * @author 王阳
@@ -34,10 +29,13 @@ public class UserController {
     @ApiOperation(value="插入用户信息", notes="插入用户信息")
     @RequestMapping(value="/insertUser",method= RequestMethod.POST)
     @ResponseBody
-    public void insertUser(@RequestParam MultipartFile[] file, User user){
+    public Object insertUser(@RequestParam MultipartFile[] file, User user){
         try{
-            int width = 140, height = 140;
             for (int i=0;i<file.length;i++){
+                String name = file[i].getOriginalFilename().substring(file[i].getOriginalFilename().lastIndexOf(".") + 1);
+                if(!"jpg".equals(name)||!"jpeg".equals(name)||!"png".equals(name)){
+                    return "仅支持jpg、jpeg、png格式";
+                }
                 byte[] bytes = ImgUtil.ScaleImage(file[i].getInputStream(), 400, 400);
                 String str = new String(bytes);
                 if(i==0){
@@ -56,6 +54,7 @@ public class UserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return true;
     }
     @ApiOperation(value="插入单张图片", notes="插入图片")
     @RequestMapping (value = "/saveimg",method= RequestMethod.POST)
