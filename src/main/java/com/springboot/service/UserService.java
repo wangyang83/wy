@@ -20,7 +20,7 @@ public interface UserService {
     void insertUser(User user);
 
 
-    GridPage<User> selectUser(UserDomain page);
+    void selectUser(Long id);
 
 
     void insertPhoto(User user);

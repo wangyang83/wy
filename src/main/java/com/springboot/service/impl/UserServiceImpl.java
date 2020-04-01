@@ -36,30 +36,57 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public GridPage<User> selectUser(UserDomain page) {
-        GridPage<User> gridPage = new GridPage<>();
-        List<User> user = null;
-        try{
-             user = userMapper.getUser(page);
-            gridPage.setList(user);
-        }catch (Exception e){
-            throw new BaseException("数据库执行异常");
+    public void selectUser(Long id) {
+//        GridPage<User> gridPage = new GridPage<>();
+//        List<User> user = null;
+//        try{
+//             user = userMapper.getUser(page);
+//            gridPage.setList(user);
+//        }catch (Exception e){
+//            throw new BaseException("数据库执行异常");
+//        }
+        File file =new File("D:/images");
+        //如果文件夹不存在则创建
+        if  (!file .exists()  && !file .isDirectory()) {
+            file .mkdir();
         }
-        /*byte[] bytes1 = user.getPhoto();// 数据库查询出来的二进制;
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes1);
-        try {
-            BufferedImage bi1 = ImageIO.read(bais);
-            File w2 = new File("D:\\excel-rainy", "123.jpg");// 可以是jpg,png,gif格式
-            ImageIO.write(bi1, "jpg", w2);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        return gridPage;
+        User user = userMapper.selectUser(id);
+        // 数据库查询出来的二进制;
+        if(user.getPhoto() != null){
+            byte[] bytes1 = user.getPhoto();
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes1);
+            try {
+                BufferedImage bi1 = ImageIO.read(bais);
+                // 可以是jpg,png,gif格式
+                File w2 = new File("D:/images", "123457.jpg");
+                // 可以是jpg,png,gif格式
+                ImageIO.write(bi1, "jpg", w2);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(user.getPhoto2() != null){
+            try {
+                byte[] bytes2 = user.getPhoto2();
+                ByteArrayInputStream bais2 = new ByteArrayInputStream(bytes2);
+                BufferedImage bi2 = ImageIO.read(bais2);
+                File w3 = new File("D:/cc", "123458.jpg");
+                ImageIO.write(bi2, "jpg", w3);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @Override
     public void insertPhoto(User user) {
-        userMapper.insertPhoto(user);
+        try{
+            userMapper.insertPhoto(user);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

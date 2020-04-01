@@ -26,6 +26,9 @@ public class User extends BaseDomain {
     @ApiModelProperty(value = "照片")
     private byte[] photo;
 
+    @ApiModelProperty(value = "照片2")
+    private byte[] photo2;
+
     public String getName() {
         return name;
     }
@@ -64,5 +67,13 @@ public class User extends BaseDomain {
 
     public void setPhoto(byte[] photo) {
         this.photo = photo;
+    }
+
+    public byte[] getPhoto2() {
+        return photo2;
+    }
+
+    public void setPhoto2(byte[] photo2) {
+        this.photo2 = photo2;
     }
 }

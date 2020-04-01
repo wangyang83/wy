@@ -20,5 +20,5 @@ public interface UserMapper {
 
     List<User> getUser(UserDomain page);
 
-    List<User> selectUser(String name);
+    User selectUser(Long id);
 }
