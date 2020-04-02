@@ -1,6 +1,7 @@
 package com.springboot.tool.util;
 
 import com.springboot.tool.page.domain.Page;
+import com.springboot.tool.page.domain.SimplePage;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
@@ -15,22 +16,23 @@ public class GridPage<T> implements Serializable {
     @ApiModelProperty(value = "数据集")
     private List<T> list;
     @ApiModelProperty(value = "页码")
-    private Integer page;
+    private int page;
     @ApiModelProperty(value = "行数")
-    private Integer row;
+    private int row;
     @ApiModelProperty(value = "总页数")
-    private Integer allPages;
+    private int allPages;
     @ApiModelProperty(value = "总行数")
-    private Integer allRows;
+    private int allRows;
 
-    public GridPage() {
-}
+    public GridPage() {}
+
     public GridPage(Page searchVo) {
         this.page=searchVo.getPage();
         this.row=searchVo.getRows();
-        this.allPages=searchVo.getTotalPage();
+        this.allPages=searchVo.getTotalRecord();
         this.allRows=searchVo.getPageCount();
     }
+
     public List<T> getList() {
         return list;
     }
@@ -39,35 +41,35 @@ public class GridPage<T> implements Serializable {
         this.list = list;
     }
 
-    public Integer getPage() {
+    public int getPage() {
         return page;
     }
 
-    public void setPage(Integer page) {
+    public void setPage(int page) {
         this.page = page;
     }
 
-    public Integer getRow() {
+    public int getRow() {
         return row;
     }
 
-    public void setRow(Integer row) {
+    public void setRow(int row) {
         this.row = row;
     }
 
-    public Integer getAllPages() {
+    public int getAllPages() {
         return allPages;
     }
 
-    public void setAllPages(Integer allPages) {
+    public void setAllPages(int allPages) {
         this.allPages = allPages;
     }
 
-    public Integer getAllRows() {
+    public int getAllRows() {
         return allRows;
     }
 
-    public void setAllRows(Integer allRows) {
+    public void setAllRows(int allRows) {
         this.allRows = allRows;
     }
 }

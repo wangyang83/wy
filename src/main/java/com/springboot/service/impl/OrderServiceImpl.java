@@ -18,15 +18,17 @@ import java.util.List;
  */
 @Service(value = "OrderService")
 public class OrderServiceImpl implements OrderService {
-    @Autowired
+    @Resource
     private OrderMapper orderMapper;
 
     @Override
     public GridPage<Order> selectOrder(OrderSearch orderSearch) {
-        GridPage<Order> gridPage = new GridPage<>();
+        GridPage<Order> gridPage = null;
         try{
-           List<Order> orders = orderMapper.selectOrder(orderSearch);
-           gridPage.setList(orders);
+            List<Order> orders = orderMapper.selectOrder(orderSearch);
+            System.out.println(orderSearch.getPage());
+            gridPage = new GridPage<>(orderSearch);
+            gridPage.setList(orders);
         }catch (Exception e){
             throw new BaseException("查询订单信息");
         }

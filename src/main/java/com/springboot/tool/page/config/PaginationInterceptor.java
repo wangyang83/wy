@@ -16,6 +16,7 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.sql.Connection;
@@ -31,6 +32,7 @@ import java.util.Properties;
  * @author 王阳
  * @date 2020/3/27 10:48
  */
+@Component
 @Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class , Integer.class}) })
 public class PaginationInterceptor implements Interceptor {
 
