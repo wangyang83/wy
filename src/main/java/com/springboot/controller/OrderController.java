@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.xml.transform.Result;
-import java.util.List;
-
 /**
  * @author 王阳
  * @date 2020/4/1 10:00
@@ -29,7 +26,7 @@ public class OrderController {
     private OrderService orderService;
 
     @ApiOperation(value = "查询订单信息")
-    @RequestMapping(value = "selectOrder",method = RequestMethod.POST)
+    @RequestMapping(value = "selectOrder",method = RequestMethod.GET)
     @ResponseBody
     public BaseResult<GridPage<Order>> selectOrder(OrderSearch orderSearch){
         BaseResult<GridPage<Order>> result = new BaseResult<>();
