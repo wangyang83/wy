@@ -23,6 +23,7 @@ public class User extends BaseDomain {
     @ApiModelProperty(value = "用户等级",required = true)
     private Integer grade;
 
+
     @ApiModelProperty(value = "照片")
     private byte[] photo;
 

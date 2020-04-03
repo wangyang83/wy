@@ -20,7 +20,7 @@ import java.io.*;
  * @date 2020/3/25 15:12
  */
 @RestController
-@RequestMapping(value = "/User")
+@RequestMapping(value = "user")
 @Api(value = "用户登录信息")
 public class UserController {
     @Autowired
@@ -88,7 +88,7 @@ public class UserController {
 
 
     @ApiOperation(value="查询图片", notes="插入用户信息")
-    @RequestMapping(value="/selectUser", method= RequestMethod.POST)
+    @RequestMapping(value="/selectUser", method= RequestMethod.GET)
     @ResponseBody
     public void selectUser(Long id){
         BaseResult<GridPage<User>> result = new BaseResult<>();

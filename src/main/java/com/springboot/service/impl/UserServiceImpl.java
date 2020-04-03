@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
         }
         User user = userMapper.selectUser(id);
         // 数据库查询出来的二进制;
+
         if(user.getPhoto() != null){
             byte[] bytes1 = user.getPhoto();
             ByteArrayInputStream bais = new ByteArrayInputStream(bytes1);
